@@ -40,7 +40,7 @@ def show_qr_code(host, port, is_auth_enabled, username=None, password=None):
 	'''
 	Define the temporary directory, file path und the string we want to display via a QR-Code
 	'''
-	tmp_dir = os.path.join(xbmc.translatePath('special://temp/'), variables.__addon_name__)
+	tmp_dir	= os.path.join(xbmc.translatePath(__addon__.getAddonInfo('profile')).decode('utf-8'), 'tmp')
 	tmp_file = os.path.join(tmp_dir, 'qr-code.png')
 
 	if not os.path.exists(tmp_dir):

@@ -7,7 +7,7 @@ import xbmc
 import xbmcaddon
 
 __addon__ 		= xbmcaddon.Addon(id=variables.__addon_id__)
-__tmp_dir__		= os.path.join(xbmc.translatePath('special://temp/'), variables.__addon_name__)
+__tmp_dir__		= os.path.join(xbmc.translatePath(__addon__.getAddonInfo('profile')).decode('utf-8'), 'tmp')
 
 def post_notification(id, app_name, title, text, big_text, info_text, ticker_text, sub_text, display_time, large_icon, app_icon, small_icon):
 	'''
