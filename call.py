@@ -30,7 +30,6 @@ def on_call_start(data):
 
 	current_volume_level = __get_current_volume_level()
 
-	print(__music_volume__)
 	if __player__.isPlayingAudio():
 		if __music_action__ == 1:
 			xbmc.executebuiltin('Mute')
@@ -59,7 +58,7 @@ def on_call_end(data, resetVolumeTo):
 	:param data: The data received by the android-app
 	:param resetVolumeTo: volume-level to reset if activated in the settings
 	'''
-	print(resetVolumeTo)
+
 	if __player__.isPlayingAudio():
 		if __music_action__ == 1 and __unmute_music__:
 			xbmc.executebuiltin('Mute')
