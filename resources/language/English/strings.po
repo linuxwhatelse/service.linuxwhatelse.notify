@@ -16,82 +16,94 @@ msgstr ""
 "Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgctxt "#100"
+msgctxt "#30000"
+msgid "General"
+msgstr ""
+
+msgctxt "#30001"
 msgid "Advanced"
 msgstr ""
 
-msgctxt "#110"
-msgid "Call-Behaviour"
+msgctxt "#30002"
+msgid "HTTP Server"
 msgstr ""
 
-msgctxt "#101"
-msgid "Server-Settings"
-msgstr ""
-
-msgctxt "#102"
+msgctxt "#30003"
 msgid "Enable Basic-Authorization"
 msgstr ""
 
-msgctxt "#103"
+msgctxt "#30004"
 msgid "Username"
 msgstr ""
 
-msgctxt "#104"
+msgctxt "#30005"
 msgid "Password"
 msgstr ""
 
-msgctxt "#105"
+msgctxt "#30006"
 msgid "Port"
 msgstr ""
 
-msgctxt "#111"
-msgid "Music"
+msgctxt "#30007"
+msgid "After changing the port, disable and enable the add-on for the changes to take effect"
 msgstr ""
 
-msgctxt "#112"
-msgid "Video"
+msgctxt "#30008"
+msgid "On call - Music playback"
 msgstr ""
 
-msgctxt "#113"
+msgctxt "#30009"
+msgid "On call - Video playback"
+msgstr ""
+
+msgctxt "#30010"
 msgid "When call arrives"
 msgstr ""
 
-msgctxt "#114"
+msgctxt "#30011"
 msgid "Do nothing"
 msgstr ""
 
-msgctxt "#115"
+msgctxt "#30012"
 msgid "Mute"
 msgstr ""
 
-msgctxt "#116"
+msgctxt "#30013"
 msgid "Pause"
 msgstr ""
 
-msgctxt "#117"
+msgctxt "#30014"
 msgid "Change volume"
 msgstr ""
 
-msgctxt "#118"
+msgctxt "#30015"
 msgid "Unmute after call ends"
 msgstr ""
 
-msgctxt "#119"
+msgctxt "#30016"
 msgid "Play again after call ends"
 msgstr ""
 
-msgctxt "#120"
+msgctxt "#30017"
 msgid "Set volume to"
 msgstr ""
 
-msgctxt "#121"
-msgid "Reset volume after call ended"
+msgctxt "#30018"
+msgid "Reset volume after call ends"
 msgstr ""
 
-msgctxt "#200"
-msgid "QR-Code generation not available"
+msgctxt "#30019"
+msgid "Couldn't start service"
 msgstr ""
 
-msgctxt "#201"
-msgid "Some dependencies are missing so this won't work"
+msgctxt "#30020"
+msgid "Try restarting Kodi or a different port if this problem persists"
+msgstr ""
+
+msgctxt "#30021"
+msgid "Notifications"
+msgstr ""
+
+msgctxt "#30022"
+msgid "Play notification sound"
 msgstr ""
