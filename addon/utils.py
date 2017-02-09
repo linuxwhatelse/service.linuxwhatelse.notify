@@ -11,7 +11,7 @@ def translate(id):
 
 def log(*args, **kwargs):
     if not kwargs or 'lvl' not in kwargs:
-        lvl = xbmc.LOGNOTICE
+        lvl = xbmc.LOGDEBUG
 
     else:
         lvl = kwargs['lvl']
