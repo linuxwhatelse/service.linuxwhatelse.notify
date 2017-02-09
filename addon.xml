@@ -18,11 +18,12 @@
     <extension point="xbmc.service" library="service.py" start="login"/>
 
     <extension point="xbmc.addon.metadata">
-        <license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
         <platform>all</platform>
-        <summary lang="en">Official Notify-Addon for Kodi</summary>
-        <description lang="en">
-The Android-App is currently in beta. To participate in the beta-test you have to join the linuxwhatelse community on Google+ http://goo.gl/UvMw3n
-        </description>
+        <summary lang="en_GB">Official Notify-Addon for Kodi</summary>
+        <description lang="en_GB">The Android-App is currently in beta. To participate in the beta-test you have to join the linuxwhatelse community on Google+ http://goo.gl/UvMw3n</description>
+        <license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
+        <website>http://www.linuxwhatelse.com</website>
+        <email>info@linuxwhatelse.com</email>
+        <source>https://github.com/linuxwhatelse/service.linuxwhatelse.notify</source>
     </extension>
 </addon>
