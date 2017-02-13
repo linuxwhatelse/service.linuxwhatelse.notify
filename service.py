@@ -138,7 +138,7 @@ if __name__ == '__main__':
 
     monitor = xbmc.Monitor()
     while not monitor.abortRequested():
-        if monitor.waitForAbort(1):
+        if monitor.waitForAbort(60):
             break
 
     server.shutdown()
