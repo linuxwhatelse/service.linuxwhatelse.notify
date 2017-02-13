@@ -1,6 +1,7 @@
 import os
 import json
 import threading
+import urllib2
 
 import BaseHTTPServer
 
@@ -97,7 +98,6 @@ class Server():
             return
 
         self._server.allow_reuse_address = True
-        self._server.timeout = 0.2
 
         self._alive.set()
         utils.log('Server started, handling requests...')
@@ -115,7 +115,17 @@ class Server():
 
     def shutdown(self):
         utils.log('Shutting down!')
+
         self._exit.set()
+        self._exit.wait()
+
+        # Send a dummy request to trigger handle_request
+        port = int(addon.getSetting('server.port'))
+        try:
+            result = urllib2.urlopen('http://localhost:%i' % port)
+        except urllib2.HTTPError:
+            # To be expected because GET isn't implemented at all
+            pass
 
     def is_alive(self):
         return self._alive.is_set()
