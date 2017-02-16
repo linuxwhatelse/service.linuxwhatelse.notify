@@ -59,10 +59,6 @@ class Handler(BaseHTTPServer.BaseHTTPRequestHandler):
 
         self.end_headers()
 
-    @mpr.s_url('/shutdown/')
-    def shutdown(self):
-        pass
-
     def log_message(self, format, *args):
         utils.log("%s - - [%s] %s\n" % (self.address_string(),
                                         self.log_date_time_string(),
