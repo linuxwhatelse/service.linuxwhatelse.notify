@@ -1,9 +1,10 @@
 import os
 import json
 import threading
-import urllib2
+import xmlrpclib
 
 import BaseHTTPServer
+from SocketServer import ThreadingMixIn
 
 import xbmc
 import xbmcgui
@@ -62,79 +63,61 @@ class Handler(BaseHTTPServer.BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         utils.log("%s - - [%s] %s\n" % (self.address_string(),
                                         self.log_date_time_string(),
-                                        format%args),
-                  lvl=xbmc.LOGDEBUG)
+                                        format%args))
 
 
-class Server():
-    _host = None
-    _port = None
-    _handler = None
-
-    _server = None
-
+class ThreadedHTTPServer(ThreadingMixIn, BaseHTTPServer.HTTPServer):
+    _is_alive = threading.Event()
     _exit = threading.Event()
-    _alive = threading.Event()
 
-    def __init__(self, host, port, handler):
-        self._host = host
-        self._port = port
-        self._handler = handler
+    def is_alive(self):
+        return self._is_alive.is_set()
 
-    def _serve(self):
-        try:
-            self._server = BaseHTTPServer.HTTPServer((self._host, self._port),
-                                                     self._handler)
-        except:
-            xbmcgui.Dialog().notification(utils.translate(30019),
-                                          utils.translate(30020),
-                                          addon.getAddonInfo('icon'))
-
-            utils.log('Couldn\'t start backend', lvl=xbmc.LOGERROR)
+    def serve_forever(self):
+        if self.is_alive():
+            utils.log('Server already running. Skipping!')
             return
 
-        self._server.allow_reuse_address = True
-
-        self._alive.set()
-        utils.log('Server started, handling requests...')
-        while not self._exit.is_set():
-            self._server.handle_request()
-
-        self._server.socket.close()
-
-        self._alive.clear()
-
-    def serve(self):
         t = threading.Thread(target=self._serve)
         t.daemon = True
         t.start()
 
-    def shutdown(self):
-        utils.log('Shutting down!')
+    def _serve(self):
+        utils.log('Server started, handling requests now')
+        while not self._exit.is_set():
+            self._is_alive.set()
+            self.handle_request()
 
+        self._is_alive.clear()
+
+    def exit(self):
+        utils.log('Exit requested')
         self._exit.set()
         self._exit.wait()
 
-        # Send a dummy request to trigger handle_request
-        port = int(addon.getSetting('server.port'))
+        utils.log('Exit flag was set')
         try:
-            result = urllib2.urlopen('http://localhost:%i' % port)
-        except urllib2.HTTPError:
-            # To be expected because GET isn't implemented at all
+            addr = 'http://%s:%i' % (self.server_address[0],
+                                     self.server_address[1])
+
+            utils.log('Sending dummy request to:', addr)
+            xmlrpclib.Server(addr).ping()
+        except:
             pass
 
-    def is_alive(self):
-        return self._alive.is_set()
+        utils.log('Shutdown complete')
 
 
 if __name__ == '__main__':
     port = int(addon.getSetting('server.port'))
-    server = Server('', port, Handler)
-    server.serve()
+
+    server = ThreadedHTTPServer(('0.0.0.0', port), Handler)
+    server.timeout = 60
+    server.serve_forever()
 
     monitor = xbmc.Monitor()
     while not monitor.abortRequested():
         if monitor.waitForAbort(60):
             break
 
-    server.shutdown()
+    server.exit()
