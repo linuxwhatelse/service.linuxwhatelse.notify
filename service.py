@@ -112,7 +112,6 @@ if __name__ == '__main__':
     port = int(addon.getSetting('server.port'))
 
     server = ThreadedHTTPServer(('0.0.0.0', port), Handler)
-    server.timeout = 60
     server.serve_forever()
 
     monitor = xbmc.Monitor()
