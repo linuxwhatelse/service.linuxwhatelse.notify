@@ -8,14 +8,15 @@
         <import addon="xbmc.python" version="2.24.0"/>
 
         <import addon="script.module.pyqrcode" version="0.0.1"/>
-        <import addon="script.module.lwe_mapper" version="1.1.0"/>
+        <import addon="script.module.lwe_mapper" version="1.2.5"/>
     </requires>
+
+    <extension point="xbmc.service" library="service.py" start="login"/>
 
     <extension point="xbmc.python.script" library="script.py">
         <provides>executable</provides>
     </extension>
 
-    <extension point="xbmc.service" library="service.py" start="login"/>
 
     <extension point="xbmc.addon.metadata">
         <platform>all</platform>
