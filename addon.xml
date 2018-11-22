@@ -21,7 +21,7 @@
     <extension point="xbmc.addon.metadata">
         <platform>all</platform>
         <summary lang="en_GB">Official Notify-Addon for Kodi</summary>
-        <description lang="en_GB">The Android-App is currently in beta. To participate in the beta-test you have to join the linuxwhatelse community on Google+ http://goo.gl/UvMw3n</description>
+        <description lang="en_GB">The android app is in public beta which you can joined here: https://goo.gl/17MUsz</description>
         <license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
         <website>http://www.linuxwhatelse.de</website>
         <email>info@linuxwhatelse.de</email>
